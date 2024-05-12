@@ -1,16 +1,19 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from "react";
 
-import App from './App.jsx'
-import AuthContextProvider from './context/auth';
+import { ToastContainer } from "react-toastify";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
 
-import "antd/dist/reset.css";
-import './index.css'
+import "swiper/css";
+import "react-toastify/dist/ReactToastify.css";
+import "./index.css";
+import AuthContextProvider from "./contexts/authContexts.jsx";
 
-ReactDOM.createRoot( document.getElementById( 'root' ) ).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthContextProvider>
       <App />
     </AuthContextProvider>
-  </React.StrictMode>,
-)
+    <ToastContainer />
+  </React.StrictMode>
+);

@@ -1,44 +1,55 @@
-import { Fragment, useContext } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import HomePage from "./pages/public/home"
-import LoginPage from './pages/public/login';
-import RegisterPage from "./pages/public/register";
+import HomePage from "./pages/public/home";
 import PostsPage from "./pages/public/posts";
+import AboutPage from "./pages/public/about";
+import RegisterPage from "./pages/public/register";
+import LoginPage from "./pages/public/login";
 import PublicLayout from "./components/layout/public";
-import UserPostsPage from "./pages/user/posts";
-import UserAccountPage from './pages/user/account';
-import DashboardPage from "./pages/admin/dashboard";
-import AdminAccountPage from "./pages/admin/account";
-import PrivateLayout from "./components/layout/private";
-import NotFoundPage from "./pages/public/not-found";
-import { AuthContext } from "./context/auth";
+import PostPage from "./pages/public/post";
+import CategoriesPage from "./pages/public/categories";
+import Dashboard from "./pages/admin/dashboard";
+import AdminPosts from "./pages/admin/posts";
+import AdminCategories from "./pages/admin/categories";
+import Users from "./pages/admin/users";
+import AdminLayout from "./components/layout/admin";
+import Myposts from "./pages/user/myposts";
+import Account from "./pages/user/account";
+import { Fragment, useContext } from "react";
+import { AuthContext } from "./contexts/authContexts";
 
 const App = () => {
-  const { isAuth, role } = useContext( AuthContext )
+  const { auth, role } = useContext(AuthContext);
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<PublicLayout />}>
+        <Route path="/" element={<PublicLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="register" element={<RegisterPage />} />
           <Route path="posts" element={<PostsPage />} />
-          {/* <Route path="my-posts" element={token ? <UserPostsPage /> : <Navigate to="/login" />} />
-          <Route path="account" element={token ? <UserAccountPage /> : <Navigate to="/login" />} /> */}
-          {isAuth ? <Fragment>
-            <Route path="my-posts" element={<UserPostsPage />} />
-            <Route path="account" element={<UserAccountPage />} />
-          </Fragment> : null}
+          <Route path="post/:postId" element={<PostPage />} />
+          <Route path="category/:categoryId" element={<CategoriesPage />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="login" element={<LoginPage />} />
+          {auth ? (
+            <Fragment>
+              <Route path="my-posts" element={<Myposts />} />
+              <Route path="user-account" element={<Account />} />
+            </Fragment>
+          ) : null}
         </Route>
-        <Route element={isAuth && role === 'admin' ? <PrivateLayout /> : <Navigate to="/" />}>
-          <Route path="admin/dashboard" element={<DashboardPage />} />
-          <Route path="admin/account" element={<AdminAccountPage />} />
-        </Route>
-        <Route path="*" element={<NotFoundPage />}></Route>
+        {role && auth ? 
+        <Route path="/admin/" element={<AdminLayout />}>
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="posts" element={<AdminPosts />} />
+        <Route path="categories" element={<AdminCategories />} />
+        <Route path="users" element={<Users />} />
+      </Route> : null}
+        <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default App
+export default App;

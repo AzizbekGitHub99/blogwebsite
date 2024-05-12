@@ -1,7 +1,7 @@
-const UserAccountPage = () => {
+const Account = () => {
   return (
-    <div>UserAccountPage</div>
+    <div>Account</div>
   )
 }
 
-export default UserAccountPage
+export default Account

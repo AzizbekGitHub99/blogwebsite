@@ -1,0 +1,122 @@
+.hero {
+  background-image: url("../../../assets/images/hero-img.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 1440px;
+  width: 100%;
+  height: 720px;
+  margin: 0 auto;
+
+  &__category {
+    margin-top: 65px;
+    padding-top: 120px;
+    color: rgb(255, 255, 255);
+    font-weight: 900;
+    line-height: 20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    color: rgb(255, 255, 255);
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 64px;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+    max-width: 803px;
+  }
+
+  &__info {
+    line-height: 28px;
+    color: #ffffff;
+    margin-bottom: 16px;
+    &__auth {
+      color: #ffd050;
+    }
+  }
+
+  &__desc {
+    color: rgb(255, 255, 255);
+    line-height: 28px;
+    max-width: 599px;
+    margin-bottom: 48px;
+  }
+
+  &__link {
+    padding: 16px 48px;
+    color: rgb(35, 37, 54);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    background: rgb(255, 208, 80);
+    border: 1px solid transparent;
+    transition: 0.4s;
+
+    &:hover {
+      background-color: rgb(35, 37, 54);
+      border: 1px solid rgb(255, 208, 80);
+      color: #ffffff;
+    }
+  }
+}
+
+@media (max-width: 796px) {
+  .hero {
+    background-position: center;
+    height: 650px;
+
+    &__category {
+      margin-bottom: 12px;
+      padding-top: 60px;
+    }
+
+    &__title {
+      font-size: 40px;
+      line-height: 54px;
+      margin-bottom: 12px;
+    }
+
+    &__desc {
+      margin-bottom: 32px;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .hero {
+    background-position: center;
+    height: 500px;
+    text-align: center;
+
+    &__title{
+      line-height: 38px;
+      font-size: 32px;
+    }
+
+
+    &__desc{
+      line-height: 16px;
+      font-size: 14px;
+    }
+  }
+}
+
+.categories {
+  margin-top: 82px;
+
+  &__title {
+    color: rgb(35, 37, 54);
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: -2px;
+    text-align: center;
+    margin-bottom: 70px;
+  }
+}
+
+.mySwiper {
+  margin-bottom: 73px;
+}

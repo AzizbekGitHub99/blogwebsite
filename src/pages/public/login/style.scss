@@ -1,0 +1,71 @@
+.login {
+  margin-top: 100px;
+
+  &__title {
+    margin-bottom: 26px;
+    color: rgb(35, 37, 54);
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 64px;
+    letter-spacing: -2px;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    width: 768px;
+  }
+
+  &__inp {
+    max-width: 768px;
+    padding: 24px;
+    margin-bottom: 19px;
+    border: 1px solid rgba(109, 110, 118, 0.5);
+    border-radius: 2px;
+    outline: none;
+  }
+
+  &__btn {
+    margin-top: 54px;
+    margin-bottom: 50px;
+    border: 1px solid transparent;
+    background: rgb(255, 208, 80);
+    padding: 16px;
+    color: rgb(35, 37, 54);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    transition: 0.5s;
+
+    &:hover{
+        border: 1px solid rgb(255, 208, 80);
+        background-color: transparent;
+    }
+  }
+}
+
+@media screen and (max-width: 700px){
+    .login{
+
+        &__title{
+            margin-bottom: 40px;
+        }
+
+        &__inp{
+            padding: 16px;
+        }
+
+        &__btn{
+            margin-top: 24px;
+            padding: 8px;
+        }
+    }
+} 

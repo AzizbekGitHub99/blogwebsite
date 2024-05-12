@@ -1,0 +1,116 @@
+.header {
+  background: rgb(35, 37, 54);
+  padding: 12px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 50;
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__left {
+      display: flex;
+      gap: 83px;
+    }
+
+    &__list {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    &__link {
+      color: rgb(255, 255, 255);
+      line-height: 28px;
+      padding: 8px 0;
+      border-bottom: 1px solid transparent;
+      transition: 0.5s;
+
+      &:hover {
+        border-bottom: 1px solid rgb(255, 255, 255);
+      }
+    }
+
+    &__btn {
+      color: rgb(35, 37, 54);
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 24px;
+      padding: 16px 40px;
+      background: rgb(255, 255, 255);
+      border: 1px solid transparent;
+      transition: 0.5s;
+      border-radius: 2px;
+
+      &:hover {
+        background: rgb(35, 37, 54);
+        color: rgb(255, 255, 255);
+        border: 1px solid rgb(255, 255, 255);
+      }
+    }
+  }
+
+  &__menu {
+    border: none;
+    background-color: transparent;
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .header {
+    &__nav {
+      &__left {
+        gap: 28px;
+      }
+
+      &__btn {
+        padding: 8px 24px;
+      }
+    }
+  }
+}
+
+@media (max-width: 740px) {
+  .header {
+    
+
+    &__menu{
+        display: block;
+    }
+    &__nav {
+      &__left {
+        flex-direction: column;
+        justify-content: space-between;
+        position: absolute;
+        top: 100%;
+        width: 70%;
+        right: 0;
+        background: rgb(35, 37, 54);
+        padding: 8px;
+        min-height: calc(100vh - 65px );
+        border-top: 1px solid white;
+        transform: translateX(101%);
+        transition: 0.5s;
+
+        &__hide{
+            transform: translateX(0);
+        }
+      }
+
+
+      &__list {
+        flex-direction: column;
+      }
+
+      &__btn {
+        text-align: center;
+      }
+    }
+  }
+}

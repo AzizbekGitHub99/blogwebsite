@@ -1,0 +1,42 @@
+.category {
+  margin-top: 82px;
+
+  &__title {
+    color: rgb(35, 37, 54);
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 64px;
+    letter-spacing: -2px;
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    color: rgb(109, 110, 118);
+    font-weight: 400;
+    line-height: 28px;
+    margin-bottom: 32px;
+  }
+
+  &__info {
+    text-align: center;
+    height: 348px;
+    padding: 80px 0;
+    background: rgb(244, 240, 248);
+
+    h3 {
+      color: rgb(35, 37, 54);
+      font-weight: 500;
+      line-height: 20px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .category{
+    &__title{
+      font-size: 40px;
+    }
+  }
+}

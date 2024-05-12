@@ -1,0 +1,38 @@
+.category-card {
+  box-sizing: border-box;
+  border: 1px solid rgb(109, 110, 118);
+  padding: 32px;
+  transition: 0.4s;
+
+  &__img {
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  &:hover {
+    background: rgb(255, 208, 80);
+    border: 1px solid transparent;
+  }
+
+  &:hover &__img {
+    background: rgb(251, 246, 234);
+  }
+
+  &__title {
+    color: rgb(35, 37, 54);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: -1px;
+  }
+
+  &__text {
+    color: rgb(109, 110, 118);
+    line-height: 28px;
+    display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+  height: 84px;
+  }
+}

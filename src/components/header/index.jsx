@@ -1,32 +1,92 @@
-import { useContext } from "react"
-import { NavLink, useNavigate } from "react-router-dom"
-import Cookies from "js-cookie"
+import { useContext, useState } from "react";
 
-import Container from "../container"
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
-import { TOKEN } from "../../constants"
-import { AuthContext } from "../../context/auth"
+import Container from "../container";
 
-import "./style.css"
+import siteLogo from "../../assets/images/site-logo.svg";
+import menu from "../../assets/images/hamburger-menu.png";
+
+import "./style.scss";
+import { AuthContext } from "../../contexts/authContexts";
+import { TOKEN } from "../../consts";
 
 const Header = () => {
-  const { isAuth, setIsAuth, setRole } = useContext( AuthContext )
-  const navigate = useNavigate()
-  const logout = () => {
-    Cookies.remove( TOKEN );
-    navigate( '/' )
-    setIsAuth( false )
-    setRole( null )
-  }
+  const [openMenu, setOpenMenu] = useState(false);
+  const handleOpen = () => {
+    setOpenMenu(!openMenu);
+  };
+  const navigate = useNavigate();
+  const { auth, setAuth, setRole, role } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    const checkLogout = window.confirm("Do you want to exit ?")
+    if(checkLogout){
+      Cookies.remove(TOKEN);
+      navigate("/");
+      setAuth(false)
+      setRole(null) 
+    }
+  };
+
   return (
-    <header>
+    <header className="header">
       <Container>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/posts">Posts</NavLink>
-        {isAuth ? <button onClick={logout}>Logout</button> : <NavLink to="/login">Login</NavLink>}
+        <nav className="header__nav">
+          <Link to="/">
+            <img src={siteLogo} alt="site-logo" />
+          </Link>
+          <div
+            className={`header__nav__left ${
+              openMenu ? "header__nav__left__hide" : null
+            } `}
+          >
+            <ul className="header__nav__list">
+              <li>
+                <Link className="header__nav__link" to="/">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link className="header__nav__link" to="/posts">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link className="header__nav__link" to="/about">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link className="header__nav__link" to="/register">
+                  Register
+                </Link>
+              </li>
+              {role === 'admin' ? 
+              <li>
+              <Link className="header__nav__link" to="/admin/dashboard">
+                Admin
+              </Link>
+            </li>: null}
+            </ul>
+            {auth ? (
+              <button onClick={handleLogout} className="header__nav__btn">
+                Log Out
+              </button>
+            ) : (
+              <Link className="header__nav__btn" to="/login">
+                Login
+              </Link>
+            )}
+          </div>
+          <button onClick={handleOpen} className="header__menu">
+            <img width={38} src={menu} alt="menu" />
+          </button>
+        </nav>
       </Container>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

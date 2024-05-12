@@ -1,0 +1,90 @@
+.posts {
+  margin-top: 82px;
+
+  &__search {
+    width: 100%;
+    padding: 24px;
+    border: 1px solid rgba(109, 110, 118, 0.5);
+    border-radius: 2px;
+    outline: none;
+    margin-top: 64px;
+    margin-bottom: 54px;
+  }
+
+  &__title {
+    color: rgb(35, 37, 54);
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 64px;
+    letter-spacing: -2px;
+    margin-bottom: 32px;
+  }
+
+  &__line {
+    display: block;
+    width: 100%;
+    border: 1px solid rgb(109, 110, 118);
+    opacity: 0.32;
+  }
+
+  &__content {
+    margin-top: 64px;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin: 50px 0;
+
+  &__page {
+    color: rgb(35, 37, 54);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: -1px;
+    cursor: pointer;
+  }
+
+  &__active-link {
+    background-color: #ffd050;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+
+  &__prev,
+  &__next {
+    color: rgb(35, 37, 54);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    cursor: pointer;
+  }
+
+  &__disabled {
+    color: rgb(109, 110, 118);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+  }
+}
+
+
+@media (max-width: 450px){
+  .pagination{
+    gap: 12px;
+    &__page{
+      font-size: 16px;
+    }
+    &__prev,
+  &__next{
+    font-size: 18px;
+  }
+  }
+}
