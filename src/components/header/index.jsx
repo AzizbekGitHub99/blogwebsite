@@ -69,6 +69,18 @@ const Header = () => {
                 Admin
               </Link>
             </li>: null}
+            {role === 'user' ? 
+              <li>
+              <Link className="header__nav__link" to="/account">
+                Account
+              </Link>
+            </li>: null}
+            {role === 'user' ? 
+              <li>
+              <Link className="header__nav__link" to="/my-posts">
+                My posts
+              </Link>
+            </li>: null}
             </ul>
             {auth ? (
               <button onClick={handleLogout} className="header__nav__btn">

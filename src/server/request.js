@@ -1,14 +1,20 @@
 import axios from "axios";
-import { ENDPOINT } from "../consts";
+import { ENDPOINT, TOKEN } from "../consts";
 import { toast } from "react-toastify";
+import Cookies from "js-cookie";
+
+const token = Cookies.get(TOKEN)
 
 const request = axios.create({
     baseURL: ENDPOINT,
     timeout: 10000,
+    headers: {
+        Authorization: `Bearer ${token}`
+    }
 })
 
 request.interceptors.response.use(response => response, (error) =>{
-    toast.error(error?.message);
+    toast.error(error?.response?.data);
     return Promise.reject(error);
 })
 export default request

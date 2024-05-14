@@ -80,7 +80,7 @@ const LoginPage = () => {
                         fontSize: 24,
                       }}
                       spin
-                    />
+                    /> 
                   }
                 />: null}
                 Login

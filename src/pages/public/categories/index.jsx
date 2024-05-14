@@ -17,7 +17,6 @@ const CategoriesPage = () => {
 
   const handleValue = (e) => {
     setSearch(e.target.value)
-    console.log(search);
   }
 
   useEffect(

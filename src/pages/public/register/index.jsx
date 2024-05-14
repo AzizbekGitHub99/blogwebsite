@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
@@ -14,8 +14,12 @@ import registerSchema from "../../../schemas/registerSchema";
 import hideImg from "../../../assets/images/hide.png";
 
 import "./style.scss";
+import { AuthContext } from "../../../contexts/authContexts";
+import Cookies from "js-cookie";
+import { TOKEN } from "../../../consts";
 
 const RegisterPage = () => {
+  const {setAuth , setRole} = useContext(AuthContext)
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [hide, setHide] = useState(false)
@@ -32,10 +36,19 @@ const RegisterPage = () => {
   const onSubmit = async (value) => {
     try {
       setLoading(true);
-      await request.post("auth/register", value);
+      const {data: { token, role }} = await request.post("auth/register", value);
+      if (role === "user") {
+        navigate("/my-posts");
+        toast.success('you have successfully logged in')
+      } else if (role === "admin") {
+        toast.success('you have successfully logged in')
+        navigate("/admin/dashboard");
+      }
+      Cookies.set(TOKEN, token)
+      Cookies.set('role', role)
+      setAuth(true)
+      setRole(role)
       reset();
-      toast.success("you have successfully registered in");
-      navigate("/login");
     } finally {
       setLoading(false);
     }
@@ -70,7 +83,7 @@ const RegisterPage = () => {
               placeholder="Password"
               {...register("password")}
             />
-            <button onClick={hidePassword}>
+            <button type="button" onClick={hidePassword}>
               <img src={hideImg} alt="hide" width={20} />
             </button>
           </div>

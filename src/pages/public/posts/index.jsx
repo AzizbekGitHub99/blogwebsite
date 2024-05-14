@@ -27,7 +27,6 @@ const PostsPage = () => {
             pagination: { total },
           },
         } = await request("post", { params });
-        console.log(data, total);
         setPages(total);
         setData(data);
       } finally {

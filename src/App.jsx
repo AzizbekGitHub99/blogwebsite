@@ -14,9 +14,10 @@ import AdminCategories from "./pages/admin/categories";
 import Users from "./pages/admin/users";
 import AdminLayout from "./components/layout/admin";
 import Myposts from "./pages/user/myposts";
-import Account from "./pages/user/account";
+import UserAccount from "./pages/user/account";
 import { Fragment, useContext } from "react";
 import { AuthContext } from "./contexts/authContexts";
+import AdminAccount from "./pages/admin/account";
 
 const App = () => {
   const { auth, role } = useContext(AuthContext);
@@ -35,7 +36,7 @@ const App = () => {
           {auth ? (
             <Fragment>
               <Route path="my-posts" element={<Myposts />} />
-              <Route path="user-account" element={<Account />} />
+              <Route path="account" element={<UserAccount />} />
             </Fragment>
           ) : null}
         </Route>
@@ -45,6 +46,7 @@ const App = () => {
         <Route path="posts" element={<AdminPosts />} />
         <Route path="categories" element={<AdminCategories />} />
         <Route path="users" element={<Users />} />
+        <Route path="account" element={<AdminAccount />} />
       </Route> : null}
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
