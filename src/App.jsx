@@ -40,14 +40,15 @@ const App = () => {
             </Fragment>
           ) : null}
         </Route>
-        {role && auth ? 
-        <Route path="/admin/" element={<AdminLayout />}>
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="posts" element={<AdminPosts />} />
-        <Route path="categories" element={<AdminCategories />} />
-        <Route path="users" element={<Users />} />
-        <Route path="account" element={<AdminAccount />} />
-      </Route> : null}
+        {role && auth ? (
+          <Route path="/admin/" element={<AdminLayout />}>
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="posts" element={<AdminPosts />} />
+            <Route path="categories" element={<AdminCategories />} />
+            <Route path="users" element={<Users />} />
+            <Route path="account" element={<AdminAccount />} />
+          </Route>
+        ) : null}
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
     </BrowserRouter>

@@ -3,7 +3,7 @@ import { Button, Col, Flex, Form, Image, Input, Row, Tabs } from "antd";
 import { toast } from "react-toastify";
 
 import request from "../../server/request";
-import { BASE } from "../../consts";
+import { BASEURL } from "../../consts";
 
 const Account = () => {
   const [form] = Form.useForm();
@@ -73,7 +73,7 @@ const Account = () => {
                 {user?.photo ? 
                 <Fragment>
                 <Button  onClick={deletePhoto} danger type="dashed">Delete Photo</Button>
-                <Image width="90%" src={`${BASE}upload/${user?.photo}`} />
+                <Image width="90%" src={`${BASEURL}upload/${user?.photo}`} />
                 </Fragment> :
                  <input className="file-btn" type="file" onChange={handlePhoto} /> }
             </Flex>
