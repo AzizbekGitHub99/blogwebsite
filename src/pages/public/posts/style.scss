@@ -29,6 +29,13 @@
 
   &__content {
     margin-top: 64px;
+    margin-bottom: 30px;
+  }
+
+  &__loading{
+    position: relative;
+    margin-top: 100px;
+    margin-bottom: 100px;
   }
 }
 

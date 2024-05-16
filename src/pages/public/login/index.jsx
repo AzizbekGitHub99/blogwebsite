@@ -8,20 +8,21 @@ import { Spin } from "antd";
 import { toast } from "react-toastify";
 import { LoadingOutlined } from '@ant-design/icons';
 
-
-import request from "../../../server/request";
-import Container from "../../../components/container";
-import loginSchema from "../../../schemas/loginSchema";
+import { AuthContext } from "../../../contexts/authContexts";
 import { TOKEN } from "../../../consts";
+import loginSchema from "../../../schemas/loginSchema";
+import request from "../../../server/request";
+
+import Container from "../../../components/container";
 
 import "./style.scss";
-import { AuthContext } from "../../../contexts/authContexts";
 
 const LoginPage = () => {
+  const {setAuth , setRole} = useContext(AuthContext)
+
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const {setAuth , setRole} = useContext(AuthContext)
   const {
     register,
     handleSubmit,
@@ -44,6 +45,7 @@ const LoginPage = () => {
       }
       Cookies.set(TOKEN, token)
       Cookies.set('role', role)
+      request.defaults.headers.Authorization = 'Bearer ' + token
       setAuth(true)
       setRole(role)
       reset();
@@ -51,6 +53,7 @@ const LoginPage = () => {
       setLoading(false);
     }
   };
+  
   return (
     <Fragment>
       <div className="login">

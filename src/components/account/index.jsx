@@ -1,15 +1,19 @@
 import { Fragment, useEffect, useState } from "react";
+
 import { Button, Col, Flex, Form, Image, Input, Row, Tabs } from "antd";
 import { toast } from "react-toastify";
 
 import request from "../../server/request";
-import { BASEURL } from "../../consts";
+import { BASE } from "../../consts";
 
 const Account = () => {
-  const [form] = Form.useForm();
+
   const [user, setUser] = useState(null);
   const [btnLoading, setBtnLoading] = useState(false)
   const [callback, setCallback] = useState(false)
+  
+  const [form] = Form.useForm();
+  form.setFieldsValue(user);
 
   useEffect(() => {
     const getUser = async () => {
@@ -23,11 +27,11 @@ const Account = () => {
     setCallback(!callback)
   }
 
-  form.setFieldsValue(user);
   const onFinish = async(values) => {
     try{
         setBtnLoading(true)
         await request.put('auth/details', values)
+        toast.success("Malumotlar muvaffaqiyatli o'zgartirildi")
         refetch()
     }finally{
         setBtnLoading(false)
@@ -46,11 +50,11 @@ const Account = () => {
   };
 
   
-
   const deletePhoto = async() =>{
     const checkDelete = window.confirm()
     if(checkDelete){
         await request.delete(`auth/upload/${user?.photo}`)
+        toast.success("Rasm muvaffaqiyatli o'chirildi")
         refetch()
     }
   }
@@ -59,6 +63,7 @@ const Account = () => {
     const formData = new FormData()
     formData.append('file', e.target.files[0])
     await request.post('auth/upload', formData)
+    toast.success("Rasm muvaffaqiyatli qo'yildi")
     refetch()
   }
 
@@ -73,7 +78,7 @@ const Account = () => {
                 {user?.photo ? 
                 <Fragment>
                 <Button  onClick={deletePhoto} danger type="dashed">Delete Photo</Button>
-                <Image width="90%" src={`${BASEURL}upload/${user?.photo}`} />
+                <Image width="90%" src={`${BASE}upload/${user?.photo}`} />
                 </Fragment> :
                  <input className="file-btn" type="file" onChange={handlePhoto} /> }
             </Flex>

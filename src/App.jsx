@@ -1,3 +1,4 @@
+import { Fragment, useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import HomePage from "./pages/public/home";
@@ -15,7 +16,6 @@ import Users from "./pages/admin/users";
 import AdminLayout from "./components/layout/admin";
 import Myposts from "./pages/user/myposts";
 import UserAccount from "./pages/user/account";
-import { Fragment, useContext } from "react";
 import { AuthContext } from "./contexts/authContexts";
 import AdminAccount from "./pages/admin/account";
 
@@ -49,7 +49,10 @@ const App = () => {
             <Route path="account" element={<AdminAccount />} />
           </Route>
         ) : null}
-        <Route path="*" element={<h1>404 Not Found</h1>} />
+        <Route
+          path="*"
+          element={<h1 style={{ margin: "auto" }}>404 Not Found</h1>}
+        />
       </Routes>
     </BrowserRouter>
   );

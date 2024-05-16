@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types'
 
-import demoImg from "../../../assets/images/posts-img-demo.png";
 
 import "./style.scss";
+import imgURL from '../../../utils/getImgUrl';
 
-const PostCard = ({title, description, category}) => {
+const PostCard = ({title, description, category, photo}) => {
   const {name }= category
   return (
     <div className="post-card">
       <div className="post-card__left">
-        <img src={demoImg} alt={description} />
+        <img src={ imgURL(photo) } alt={description} />
       </div>
       <div>
         <p className="post-card__category">{name}</p>
@@ -26,6 +26,7 @@ PostCard.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   category: PropTypes.object.isRequired,
+  photo: PropTypes.object
 }
 
 export default PostCard;

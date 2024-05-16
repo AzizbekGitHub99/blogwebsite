@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/authContexts";
+import { TOKEN } from "../../consts";
 import Cookies from "js-cookie";
 
 import Container from "../container";
@@ -9,16 +11,15 @@ import siteLogo from "../../assets/images/site-logo.svg";
 import menu from "../../assets/images/hamburger-menu.png";
 
 import "./style.scss";
-import { AuthContext } from "../../contexts/authContexts";
-import { TOKEN } from "../../consts";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const { auth, setAuth, setRole, role } = useContext(AuthContext);
+  const navigate = useNavigate();
+  
   const handleOpen = () => {
     setOpenMenu(!openMenu);
   };
-  const navigate = useNavigate();
-  const { auth, setAuth, setRole, role } = useContext(AuthContext);
 
   const handleLogout = () => {
     const checkLogout = window.confirm("Do you want to exit ?")

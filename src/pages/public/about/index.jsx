@@ -1,10 +1,11 @@
+import { Fragment } from "react";
+
 import Container from "../../../components/container";
 
 import teamImg from "../../../assets/images/team.png";
 import blogImg from "../../../assets/images/blog.png";
 
 import "./style.scss";
-import { Fragment } from "react";
 
 const AboutPage = () => {
   return (

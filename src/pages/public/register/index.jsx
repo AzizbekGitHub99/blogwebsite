@@ -1,22 +1,23 @@
 import { useContext, useState } from "react";
 
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
+import { AuthContext } from "../../../contexts/authContexts";
+import { TOKEN } from "../../../consts";
 import request from "../../../server/request";
-import Container from "../../../components/container";
 import registerSchema from "../../../schemas/registerSchema";
+
+import Container from "../../../components/container";
 
 import hideImg from "../../../assets/images/hide.png";
 
 import "./style.scss";
-import { AuthContext } from "../../../contexts/authContexts";
-import Cookies from "js-cookie";
-import { TOKEN } from "../../../consts";
 
 const RegisterPage = () => {
   const {setAuth , setRole} = useContext(AuthContext)
@@ -46,6 +47,8 @@ const RegisterPage = () => {
       }
       Cookies.set(TOKEN, token)
       Cookies.set('role', role)
+      request.defaults.headers.Authorization = 'Bearer ' + token
+      
       setAuth(true)
       setRole(role)
       reset();

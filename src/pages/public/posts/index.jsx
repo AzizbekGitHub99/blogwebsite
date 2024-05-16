@@ -1,13 +1,14 @@
 import { Fragment, useEffect, useState } from "react";
-import PostCard from "../../../components/card/post";
-import Container from "../../../components/container";
 import ReactPaginate from "react-paginate";
 
+import PostCard from "../../../components/card/post";
+import Container from "../../../components/container";
+import Loading from "../../../components/loading";
+
+import { LIMIT } from "../../../consts";
 import request from "../../../server/request";
 
 import "./style.scss";
-import { LIMIT } from "../../../consts";
-import { Flex, Spin } from "antd";
 
 const PostsPage = () => {
   const [data, setData] = useState(null);
@@ -73,13 +74,11 @@ const PostsPage = () => {
             className="posts__search"
             onChange={handleValue}
           />
+
           <h1 className="posts__title">All posts</h1>
           <span className="posts__line"></span>
-
           {loading ? (
-            <Flex align="center" justify="center" style={{marginTop: "10px"}} gap="middle">
-              <Spin size="large" />
-            </Flex>
+            <div className="posts__loading"><Loading /></div>
           ) : (
             <Fragment>
               <div className="posts__content">
