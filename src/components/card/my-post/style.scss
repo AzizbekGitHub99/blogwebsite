@@ -9,8 +9,9 @@
 
     img {
       width: 100%;
-      object-fit: contain;
+      object-fit: cover;
       max-height: 318px;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     }
   }
 

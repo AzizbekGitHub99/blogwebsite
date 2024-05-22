@@ -11,6 +11,7 @@
     letter-spacing: -2px;
     margin-bottom: 60px;
   }
+  
 
   &__form {
     display: flex;
@@ -19,16 +20,22 @@
     max-width: 100%;
     width: 768px;
     gap: 16px;
-
-    input {
+    &__input { 
       max-width: 768px;
       padding: 24px;
       margin-bottom: 19px;
       border: 1px solid rgba(109, 110, 118, 0.5);
       border-radius: 2px;
       outline: none;
+
+      &__valid{
+        border: 1px solid rgb(230, 30, 30);
+      box-shadow: rgba(230, 30, 30, 0.5) 0px 1px 4px;
+      }
     }
   }
+  
+
   &__btn {
     margin-top: 34px;
     margin-bottom: 50px;
@@ -44,6 +51,13 @@
     &:hover {
       border: 1px solid rgb(255, 208, 80);
       background-color: transparent;
+    }
+
+    &__disabled{
+      border: 1px solid rgba(109, 110, 118, 0.5);
+      background-color: rgba(109, 110, 118, 0.5);
+      color: rgb(35, 37, 54);
+      cursor: not-allowed;
     }
   }
 

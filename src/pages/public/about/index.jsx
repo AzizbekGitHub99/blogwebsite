@@ -6,14 +6,16 @@ import teamImg from "../../../assets/images/team.png";
 import blogImg from "../../../assets/images/blog.png";
 
 import "./style.scss";
+import Aos from "aos";
 
 const AboutPage = () => {
+  Aos.init();
   return (
     <Fragment>
       <section className="mission">
         <Container>
-          <div className="mission__container">
-            <div>
+          <div data-aos="fade-up" data-aos-duration="700" className="mission__container">
+            <div data-aos="fade-up">
               <p className="mission__desc">Our mision</p>
               <h1 className="mission__title">
                 Creating valuable content for creatives all around the world
@@ -42,8 +44,8 @@ const AboutPage = () => {
       </section>
       <section className="team">
         <Container>
-          <div className="team__container">
-            <div>
+          <div  className="team__container">
+            <div data-aos="fade-down">
               <h3 className="team__title">Our team of creatives</h3>
               <p className="team__desc">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -59,8 +61,7 @@ const AboutPage = () => {
               </p>
             </div>
             <div className="team__container__right">
-              <div></div>
-              <img src={teamImg} alt="team " />
+              <img data-aos="fade-up" src={teamImg} alt="team " />
             </div>
           </div>
         </Container>
@@ -69,10 +70,10 @@ const AboutPage = () => {
         <Container>
           <div className="blog__container">
             <div className="blog__container__right">
-              <img src={blogImg} alt="blog " />
+              <img data-aos="fade-up" src={blogImg} alt="blog " />
               <div></div>
             </div>
-            <div>
+            <div data-aos="fade-down">
               <h3 className="blog__title">Why we started this Blog</h3>
               <p className="blog__desc">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

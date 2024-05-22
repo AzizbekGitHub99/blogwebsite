@@ -1,4 +1,3 @@
-import { Fragment, useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import HomePage from "./pages/public/home";
@@ -16,12 +15,12 @@ import Users from "./pages/admin/users";
 import AdminLayout from "./components/layout/admin";
 import Myposts from "./pages/user/myposts";
 import UserAccount from "./pages/user/account";
+import { Fragment, useContext } from "react";
 import { AuthContext } from "./contexts/authContexts";
 import AdminAccount from "./pages/admin/account";
 
 const App = () => {
   const { auth, role } = useContext(AuthContext);
-
   return (
     <BrowserRouter>
       <Routes>
@@ -40,19 +39,15 @@ const App = () => {
             </Fragment>
           ) : null}
         </Route>
-        {role && auth ? (
-          <Route path="/admin/" element={<AdminLayout />}>
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="posts" element={<AdminPosts />} />
-            <Route path="categories" element={<AdminCategories />} />
-            <Route path="users" element={<Users />} />
-            <Route path="account" element={<AdminAccount />} />
-          </Route>
-        ) : null}
-        <Route
-          path="*"
-          element={<h1 style={{ margin: "auto" }}>404 Not Found</h1>}
-        />
+        {role && auth ? 
+        <Route path="/admin/" element={<AdminLayout />}>
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="posts" element={<AdminPosts />} />
+        <Route path="categories" element={<AdminCategories />} />
+        <Route path="users" element={<Users />} />
+        <Route path="account" element={<AdminAccount />} />
+      </Route> : null}
+        <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
     </BrowserRouter>
   );

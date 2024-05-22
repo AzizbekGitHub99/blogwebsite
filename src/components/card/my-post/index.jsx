@@ -1,24 +1,44 @@
-import PropTypes from 'prop-types'
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import PropTypes from "prop-types";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
+// import demoImg from "../../../assets/images/posts-img-demo.png";
 
 import "./style.scss";
-import imgURL from '../../../utils/getImgUrl';
+import imgURL from "../../../utils/getImgUrl";
 
-const MyPostCard = ({title, _id, category, description, photo, editPost, deletePost}) => {
-  const {name} = category
+const MyPostCard = ({
+  title,
+  _id,
+  category,
+  description,
+  photo,
+  editPost,
+  deletePost,
+}) => {
+  const { name } = category;
   return (
     <div className="post-card">
       <div className="post-card__left">
-        <LazyLoadImage  width="100%" effect="blur" src={imgURL(photo)} alt="" />
+        <LazyLoadImage
+          width="100%"
+          effect="blur"
+          src={imgURL(photo)}
+          alt={title}
+          onError={({ currentTarget }) => {
+            currentTarget.src = "/nophoto.png";
+          }}
+        />
       </div>
       <div>
         <p className="post-card__category">{name}</p>
         <h3 className="post-card__title">{title}</h3>
-        <p className="post-card__desc">
-          {description}
-        </p>
-        <button onClick={()=> editPost(_id)} className='post-card__edit-btn'>Edit</button>
-        <button onClick={()=> deletePost(_id)} className='post-card__del-btn'>Delete</button>
+        <p className="post-card__desc">{description}</p>
+        <button onClick={() => editPost(_id)} className="post-card__edit-btn">
+          Edit
+        </button>
+        <button onClick={() => deletePost(_id)} className="post-card__del-btn">
+          Delete
+        </button>
       </div>
     </div>
   );
@@ -32,6 +52,6 @@ MyPostCard.propTypes = {
   _id: PropTypes.string.isRequired,
   editPost: PropTypes.func.isRequired,
   deletePost: PropTypes.func.isRequired,
-}
+};
 
 export default MyPostCard;

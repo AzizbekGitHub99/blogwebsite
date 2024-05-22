@@ -10,7 +10,7 @@ import { LoadingOutlined } from '@ant-design/icons';
 
 import { AuthContext } from "../../../contexts/authContexts";
 import { TOKEN } from "../../../consts";
-import loginSchema from "../../../schemas/loginSchema";
+import loginSchema from "../../../schemas/login";
 import request from "../../../server/request";
 
 import Container from "../../../components/container";

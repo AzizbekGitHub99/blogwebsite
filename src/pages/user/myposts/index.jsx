@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useState, useEffect, useRef, } from "react";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Spin } from "antd";
@@ -6,7 +6,7 @@ import { LoadingOutlined } from "@ant-design/icons";
 import { useForm } from "react-hook-form";
 
 import request from "../../../server/request";
-import postSchema from "../../../schemas/postSchema";
+import postSchema from "../../../schemas/post";
 
 import MyPostCard from "../../../components/card/my-post";
 import Container from "../../../components/container";
@@ -24,7 +24,14 @@ const Myposts = () => {
   const [btnLoading, setBtnLoading] = useState(false);
   const [callback, setCallback] = useState(false);
   const [selected, setSelected] = useState(null);
-  const [postData, setPostData] = useState(null);
+
+  const box = useRef(null)
+
+  const handleClick = (e) =>{
+    if(e.target.className === "box box__show"){
+      setShowModal(false)
+    }
+  }
 
   useEffect(() => {
     const getPosts = async () => {
@@ -36,7 +43,7 @@ const Myposts = () => {
         setPosts(data);
         const {
           data: { data: res },
-        } = await request("category");
+        } = await request("category", {params: {limit : 100}});
         setCategory(res);
       } finally {
         setLoading(false);
@@ -50,7 +57,6 @@ const Myposts = () => {
     handleSubmit,
     formState: { errors },
     reset,
-    setValue,
   } = useForm({
     resolver: yupResolver(postSchema),
     defaultValues:{
@@ -69,7 +75,7 @@ const Myposts = () => {
   const onSubmit = async (value) => {
     try {
       setBtnLoading(true);
-      const tags = value.tags.split(' ');
+      const tags = value.tags.split(',');
       const data = { ...value, photo: photo._id, tags };
       if(selected === null){
         await request.post("post", data);
@@ -88,7 +94,13 @@ const Myposts = () => {
     setShowModal(true);
     setPhoto(null);
     setSelected(null)
-    reset();
+    reset({
+      title: "",
+      description: "",
+      tags: "",
+      category: "",
+      photo: "",
+    });
   };
 
   const closeModal = () => {
@@ -123,15 +135,15 @@ const Myposts = () => {
    try{
     setBtnLoading(true);
     const { data } = await request(`post/${id}`);
-    setPostData(data);
-    setValue("title", postData?.title);
-    setValue("description", postData?.description);
-    setValue("category", postData?.category._id);
-    setValue("tags", [postData?.tags])
-    setPhoto(postData?.photo);
+    setPhoto(data?.photo);
     setSelected(id);
     setShowModal(true);
-    console.log(data, photo);
+    reset({
+      title: data?.title,
+      description: data?.description,
+      tags: data?.tags,
+      category: data?.category._id
+    });
    }finally{
     setBtnLoading(false)
    }
@@ -161,7 +173,7 @@ const Myposts = () => {
                 <h1>No posts</h1>
               ) : (
                 <Fragment>
-                  <h1>My posts ({posts?.length})</h1>
+                  <h1 className="my-posts__title">My posts quantity: {posts?.length}</h1>
                   {posts?.map((el) => (
                     <MyPostCard
                       key={el._id}
@@ -176,11 +188,12 @@ const Myposts = () => {
           )}
         </Container>
       </section>
-      <div className={`box ${showModal ? "box__show" : ""}`}>
+
+      <div onClick={handleClick} ref={box} className={`box ${showModal ? "box__show" : ""}`}>
         <div className={`modal ${showModal ? "modal__show" : ""}`}>
           <div>
-            <h1>Post data</h1>
-            <button className="modal__close" onClick={closeModal}>✕</button>
+            <h1>Posts data</h1>
+            <button className="modal__close" onClick={closeModal}>X</button>
           </div>
           <form onSubmit={handleSubmit(onSubmit)} className="modal__form">
             <input
@@ -188,17 +201,17 @@ const Myposts = () => {
               placeholder="Post Title"
               {...register("title")}
             />
-            <p>{errors.title?.message}</p>
+            <p style={{color: "red"}}>{errors.title?.message}</p>
 
             <input
               type="text"
               placeholder="Post description"
               {...register("description")}
             />
-            <p>{errors.description?.message}</p>
+            <p style={{color: "red"}}>{errors.description?.message}</p>
 
             <input type="text" placeholder="Post tags" {...register("tags")} />
-            <p>{errors.tags?.message}</p>
+            <p style={{color: "red"}}>{errors.tags?.message}</p>
 
             <select {...register("category")}>
               <option value="">Select category</option>
@@ -208,14 +221,14 @@ const Myposts = () => {
                 </option>
               ))}
             </select>
-            <p>{errors.category?.message}</p>
+            <p style={{color: "red"}}>{errors.category?.message}</p>
 
             {photo ? (
               <div className="my-posts__img-box">
                 <img
                   src={imgURL(photo)}
                   alt="post"
-                  style={{ width: "200px", height: "200px" }}
+                  style={{ width: "100%", height: "200px" }}
                 />
                 <button
                   type="button"
@@ -228,7 +241,7 @@ const Myposts = () => {
               </div>
             ) : (
               <input
-                {...register("photo")}
+                name="photo"
                 type="file"
                 accept="image/jpg, image/jpeg"
                 onChange={handlePhoto}
@@ -248,7 +261,7 @@ const Myposts = () => {
                   }
                 />
               ) : null}
-              {selected ? "Save Updates" :"Add Post"}
+              Add Post
             </button>
           </form>
         </div>

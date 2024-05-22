@@ -53,6 +53,7 @@ const PostsPage = () => {
       onPageChange={handlePageClick}
       pageCount={Math.ceil(pages / LIMIT)}
       previousLabel="< Prev"
+      pageRangeDisplayed={2}
       renderOnZeroPageCount={null}
       forcePage={page}
       className="pagination"

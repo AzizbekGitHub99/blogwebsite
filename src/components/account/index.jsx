@@ -50,6 +50,7 @@ const Account = () => {
   };
 
   
+  // photo  
   const deletePhoto = async() =>{
     const checkDelete = window.confirm()
     if(checkDelete){

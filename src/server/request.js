@@ -14,7 +14,7 @@ const request = axios.create({
 })
 
 request.interceptors.response.use(response => response, (error) =>{
-    toast.error(error?.message);
+    toast.error(error?.response?.data);
     return Promise.reject(error);
 })
 export default request

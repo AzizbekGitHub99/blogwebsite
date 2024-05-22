@@ -1,0 +1,50 @@
+.post {
+  margin-top: 140px;
+  margin-bottom: 82px;
+  &__img {
+    width: 100%;
+    max-height: 582px;
+    margin-bottom: 63px;
+    object-fit: cover;
+  }
+  &__user {
+    color: rgb(89, 46, 169);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: -1px;
+  }
+
+  &__date {
+    color: rgb(109, 110, 118);
+    line-height: 28px;
+    margin-bottom: 24px;
+  }
+
+  &__container {
+    max-width: 837px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    color: rgb(35, 37, 54);
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 64px;
+    letter-spacing: -2px;
+    margin-bottom: 34px;
+  }
+
+  &__tag {
+    color: rgb(35, 37, 54);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    margin-bottom: 20px;
+  }
+
+  &__desc {
+    color: rgb(109, 110, 118);
+    line-height: 28px;
+  }
+}

@@ -28,6 +28,7 @@ const Header = () => {
       navigate("/");
       setAuth(false)
       setRole(null) 
+      handleOpen()
     }
   };
 
@@ -43,24 +44,24 @@ const Header = () => {
               openMenu ? "header__nav__left__hide" : null
             } `}
           >
-            <ul className="header__nav__list">
+            <ul onClick={handleOpen} className="header__nav__list">
               <li>
-                <Link className="header__nav__link" to="/">
+                <Link  className="header__nav__link" to="/">
                   Home
                 </Link>
               </li>
               <li>
-                <Link className="header__nav__link" to="/posts">
+                <Link  className="header__nav__link" to="/posts">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link className="header__nav__link" to="/about">
+                <Link  className="header__nav__link" to="/about">
                   About
                 </Link>
               </li>
               <li>
-                <Link className="header__nav__link" to="/register">
+                <Link  className="header__nav__link" to="/register">
                   Register
                 </Link>
               </li>
@@ -72,13 +73,13 @@ const Header = () => {
             </li>: null}
             {role === 'user' ? 
               <li>
-              <Link className="header__nav__link" to="/account">
+              <Link  className="header__nav__link" to="/account">
                 Account
               </Link>
             </li>: null}
             {role === 'user' ? 
               <li>
-              <Link className="header__nav__link" to="/my-posts">
+              <Link  className="header__nav__link" to="/my-posts">
                 My posts
               </Link>
             </li>: null}
@@ -88,7 +89,7 @@ const Header = () => {
                 Log Out
               </button>
             ) : (
-              <Link className="header__nav__btn" to="/login">
+              <Link  className="header__nav__btn" to="/login">
                 Login
               </Link>
             )}

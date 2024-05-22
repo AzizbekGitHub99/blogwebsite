@@ -1,0 +1,45 @@
+.popular-post-card {
+  max-width: 405px;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
+  img {
+    width: 100%;
+    max-height: 210px;
+    object-fit: contain;
+    margin-bottom: 32px;
+  }
+  div {
+    padding: 8px;
+  }
+
+  &__info {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    margin-bottom: 16px;
+  }
+
+  &__user {
+    color: #592ea9;
+  }
+  &__title {
+    color: rgb(35, 37, 54);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+    height: 80px;
+  }
+
+  &__desc {
+    color: rgb(35, 37, 54);
+    line-height: 28px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 84px;
+  }
+}

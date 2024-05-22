@@ -1,6 +1,4 @@
 .hero {
-  
-
   &__category {
     margin-top: 65px;
     padding-top: 120px;
@@ -84,13 +82,12 @@
     height: 500px;
     text-align: center;
 
-    &__title{
+    &__title {
       line-height: 38px;
       font-size: 32px;
     }
 
-
-    &__desc{
+    &__desc {
       line-height: 16px;
       font-size: 14px;
     }
@@ -113,4 +110,20 @@
 
 .mySwiper {
   margin-bottom: 73px;
+}
+
+.popular-posts {
+  margin-top: 90px;
+  &__title {
+    color: rgb(0, 0, 0);
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: -2px;
+    margin-bottom: 64px;
+  }
+}
+
+.swiper{
+  padding: 10px !important;
 }

@@ -1,8 +1,7 @@
 import { BASE } from "../consts"
 
 const imgURL = (photo) =>{
-    const res = `${BASE}upload/${photo?._id}.${photo?.name.split('.')[1]}` 
-    return res 
+    return `${BASE}upload/${photo?._id}.${photo?.name?.split('.')[1]}` 
 }
 
 export default imgURL;

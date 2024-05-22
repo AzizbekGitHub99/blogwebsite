@@ -3,13 +3,17 @@ import { useEffect, useState } from "react";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
+  MessageOutlined,
   UserOutlined,
-  VideoCameraOutlined,
+  HomeOutlined,
+  AreaChartOutlined,
+  ProductOutlined,
 } from "@ant-design/icons";
 import { Button, Layout, Menu, theme } from "antd";
 import { Link, Outlet, useLocation } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
+
+import "./style.scss"
 
 
 const AdminLayout = () => {
@@ -17,14 +21,12 @@ const AdminLayout = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
-  const [params, setParams] = useState('')
-  const {pathname} = useLocation()
+  const [params, setParams] = useState("");
+  const { pathname } = useLocation();
 
-  useEffect(
-    () => {
-        setParams(pathname)
-    },[pathname]
-  )
+  useEffect(() => {
+    setParams(pathname);
+  }, [pathname]);
 
   return (
     <Layout>
@@ -36,35 +38,35 @@ const AdminLayout = () => {
           selectedKeys={params}
           items={[
             {
-                key: "1",
-                icon: <UserOutlined />,
-                label: <Link to={'/'}>Home</Link>,
-              },
+              key: "1",
+              icon: <HomeOutlined style={{fontSize: "24px"}} />,
+              label: <Link to={"/"}>Home</Link>,
+            },
             {
               key: "/admin/dashboard",
-              icon: <UserOutlined />,
-              label: <Link to={'/admin/dashboard'}>Dashboard</Link>,
+              icon: <AreaChartOutlined style={{fontSize: "24px"}}/>,
+              label: <Link to={"/admin/dashboard"}>Dashboard</Link>,
             },
             {
               key: "/admin/categories",
-              icon: <VideoCameraOutlined />,
-              label: <Link to={'/admin/categories'}>Categories</Link>,
+              icon: <ProductOutlined style={{fontSize: "24px"}}/>,
+              label: <Link to={"/admin/categories"}>Categories</Link>,
             },
             {
               key: "/admin/posts",
-              icon: <UploadOutlined />,
-              label: <Link to={'/admin/posts'}>Posts</Link>,
+              icon: <MessageOutlined style={{fontSize: "24px"}}/>,
+              label: <Link to={"/admin/posts"}>Posts</Link>,
             },
             {
-                key: "/admin/users",
-                icon: <UserOutlined />,
-                label: <Link to={'/admin/users'}>Users</Link>,
+              key: "/admin/users",
+              icon: <UserOutlined style={{fontSize: "24px"}}/>,
+              label: <Link to={"/admin/users"}>Users</Link>,
             },
             {
               key: "/admin/account",
-              icon: <UserOutlined />,
-              label: <Link to={'/admin/account'}>Account</Link>,
-          },
+              icon: <UserOutlined style={{fontSize: "24px"}}/>,
+              label: <Link to={"/admin/account"}>Account</Link>,
+            },
           ]}
         />
       </Sider>
