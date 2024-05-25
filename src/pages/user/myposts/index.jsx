@@ -193,7 +193,7 @@ const Myposts = () => {
         <div className={`modal ${showModal ? "modal__show" : ""}`}>
           <div>
             <h1>Posts data</h1>
-            <button className="modal__close" onClick={closeModal}>X</button>
+            <button className="modal__close" onClick={closeModal}>×</button>
           </div>
           <form onSubmit={handleSubmit(onSubmit)} className="modal__form">
             <input
