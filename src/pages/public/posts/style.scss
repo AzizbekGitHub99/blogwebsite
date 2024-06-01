@@ -32,7 +32,7 @@
     margin-bottom: 30px;
   }
 
-  &__loading{
+  &__loading {
     position: relative;
     margin-top: 100px;
     margin-bottom: 100px;
@@ -48,7 +48,7 @@
 
   &__page {
     color: rgb(35, 37, 54);
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 700;
     line-height: 40px;
     letter-spacing: -1px;
@@ -68,7 +68,7 @@
   &__prev,
   &__next {
     color: rgb(35, 37, 54);
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 700;
     letter-spacing: -1px;
     cursor: pointer;
@@ -76,22 +76,21 @@
 
   &__disabled {
     color: rgb(109, 110, 118);
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
     line-height: 32px;
   }
 }
 
-
-@media (max-width: 450px){
-  .pagination{
+@media (max-width: 450px) {
+  .pagination {
     gap: 12px;
-    &__page{
+    &__page {
       font-size: 16px;
     }
     &__prev,
-  &__next{
-    font-size: 18px;
-  }
+    &__next {
+      font-size: 16px;
+    }
   }
 }

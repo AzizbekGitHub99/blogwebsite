@@ -1,13 +1,13 @@
 .my-posts {
   margin-top: 82px;
 
-  &__title{
+  &__title {
     color: rgb(35, 37, 54);
-        font-size: 48px;
-        font-weight: 700;
-        line-height: 64px;
-        letter-spacing: -2px;
-        margin-bottom: 16px;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 64px;
+    letter-spacing: -2px;
+    margin-bottom: 16px;
   }
 
   &__box {
@@ -59,12 +59,12 @@
     margin-top: 40px;
   }
 
-  &__img-box{
+  &__img-box {
     display: flex;
     flex-direction: column;
 
-    button{
-      background-color: red ;
+    button {
+      background-color: red;
       padding: 8px;
       color: #ffff;
       margin-top: 10px;
@@ -133,9 +133,8 @@
       border-radius: 8px;
       padding: 12px;
       width: 100%;
-      
     }
-    
+
     &__submit {
       color: rgb(35, 37, 54);
       margin-top: 20px;
@@ -150,29 +149,27 @@
   }
 }
 
-
-@media (max-width: 600px){
-  .modal{
+@media (max-width: 600px) {
+  .modal {
     margin: 0 20px;
   }
 
-  .my-posts{
-
-    &__box{
-      div{
-        h1{
+  .my-posts {
+    &__box {
+      div {
+        h1 {
           font-size: 34px;
         }
       }
     }
 
-    &__btn{
+    &__btn {
       padding: 8px 12px;
     }
   }
 }
 
-.delete__photo{
+.delete__photo {
   background-color: red;
   border: none;
 }

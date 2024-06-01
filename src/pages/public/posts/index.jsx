@@ -49,10 +49,10 @@ const PostsPage = () => {
   const pagination = (
     <ReactPaginate
       breakLabel="..."
-      nextLabel="Next >"
+      nextLabel="Next"
       onPageChange={handlePageClick}
       pageCount={Math.ceil(pages / LIMIT)}
-      previousLabel="< Prev"
+      previousLabel="Prev"
       pageRangeDisplayed={2}
       renderOnZeroPageCount={null}
       forcePage={page}

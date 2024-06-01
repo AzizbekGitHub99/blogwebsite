@@ -15,7 +15,7 @@ const PostCard = ({title, description, category, photo, _id}) => {
     <div onClick={handleWay} className="post-card post-cards">
       <div className="post-card__left">
         <LazyLoadImage  src={ imgURL(photo) } alt={description}   onError={({ currentTarget }) => {
-              currentTarget.src = "/nophoto.png";
+              currentTarget.src = "/nopicture.png";
             }}/>
       </div>
       <div>

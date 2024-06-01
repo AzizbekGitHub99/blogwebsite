@@ -51,12 +51,6 @@ const HomePage = () => {
         className="hero"
         style={{
           backgroundImage: `url(${img})`,
-          backgroundRepeat: " no-repeat",
-          backgroundSize: "cover",
-          maxWidth: "1440px",
-          width: "100%",
-          height: "720px",
-          margin: "0 auto",
         }}
       >   
         <Container>
